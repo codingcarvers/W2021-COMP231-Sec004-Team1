@@ -1,34 +1,53 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+let passport = require('passport');
+let mongoose = require('mongoose');
 
+let indexController = require('../controllers/index.js');
+
+//helper function for gaurd purposes
+function requireAuth(req, res, next)
+{
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login');
+    }
+    next();
+}
 /* GET Home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home' });
-});
+router.get('/', indexController.displayHomePage);
 
 /* GET home page. */
-router.get('/home', function(req, res, next) {
-  res.render('index', { title: 'Home' });
-});
+router.get('/home', indexController.displayHomePage);
 
-/* GET About page. */
-router.get('/services', function(req, res, next) {
-  res.render('index', { title: 'Services' });
-});
+/* GET Services page. */
+router.get('/services', indexController.displayServicesPage);
 
 /* GET Search Clinics page. */
-router.get('/contact', function(req, res, next) {
-  res.render('index', { title: 'Search Clinics' });
-});
+router.get('/contact', indexController.displayContactsPage);
 
-/* GET Register page. */
-router.get('/register', function(req, res, next) {
-  res.render('index', { title: 'Register' });
-});
+/* GET Patient Home page. 
+router.get('/patientHomePage/:id', requireAuth, indexController.displayPatHomePage);
 
-/* GET Login page. */
-router.get('/login', function(req, res, next) {
-  res.render('index', { title: 'Login' });
-});
+/* GET Doctor Home page. 
+router.get('/doctorHomePage/:id', requireAuth, indexController.displayDocHomePage);
+
+/* GET Nurse Home page. 
+router.get('/nurseHomePage/:id', requireAuth, indexController.displayNurHomePage);
+
+/* GET route for displaying the Login page. */
+router.get('/login', indexController.displayLoginPage);
+
+/* GET route for processing the Login page. */
+router.get('/login', indexController.processLoginPage);
+
+/* GET route for displaying the Registration page. */
+router.get('/register', indexController.displayRegisterPage);
+
+/* GET route for processing the registration page. */
+router.get('/register', indexController.processRegisterPage);
+
+/* GET route for processing the Logout page. */
+router.get('/logout', indexController.processLogout);
 
 module.exports = router;
