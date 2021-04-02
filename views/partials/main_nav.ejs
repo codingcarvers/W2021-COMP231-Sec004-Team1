@@ -1,54 +1,63 @@
 <!--Main Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Medical Clinic with EMR</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-     
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Medical Clinic with EMR</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-          <% if ((title == "Home") || (title == "/")) { %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+
+        <% if ((title=="Home" ) || (title=="/" )) { %>
           <li class="nav-item active">
             <% } else { %>
-             <li class="nav-item">
-             <% } %>
-            <a class="nav-link" href="/home">Home</a>
+          <li class="nav-item">
+            <% } %>
+              <a class="nav-link" href="/home">Home</a>
           </li>
-          
 
-          <% if (title == "Services") { %>
+
+          <% if (title=="Services" ) { %>
             <li class="nav-item active">
               <% } else { %>
+            <li class="nav-item">
+              <% } %>
+                <a class="nav-link" href="/services">Services</a>
+            </li>
+
+            <% if (title=="Search Clinics" ) { %>
+              <li class="nav-item active">
+                <% } else { %>
               <li class="nav-item">
-             <% } %>
-            <a class="nav-link" href="/services">Services</a>
-          </li>
+                <% } %>
+                  <a class="nav-link" href="/search">Search Clinic</a>
+              </li>
 
-          <% if (title == "Search Clinics") { %>
-            <li class="nav-item active">
-              <% } else { %>
-              <li class="nav-item">
-             <% } %>
-            <a class="nav-link" href="/contact">Search Clinic</a>
-          </li>
 
-          <% if (title == "Register") { %>
-            <li class="nav-item active">
-              <% } else { %>
-              <li class="nav-item">
-             <% } %>
-            <a class="nav-link" href="/register">Register</a>
-          </li>
+              <!-- 
+                <% if(typeof displayName=='String' && displayName) {%>
+                  <li class="nav-text"> Welcome, <%= displayName %>
+                  </li>
+                    <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+                      <% } else { %>
+                        <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+                        <% } %> -->
 
-        
 
-          <% if(typeof displayName == 'String' && displayName) {%>
-          <li class="nav-text"> Welcome, <%= displayName %></li>
-          <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
-          <% } else { %>
-          <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-          <% } %>
+              <%if(currentUser){%>
+                <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+                <% } else { %>
+                  <% if (title=="Register" ) { %>
+                    <li class="nav-item active">
+                      <% } else { %>
+                    <li class="nav-item">
+                      <% } %>
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+                    <% } %>
+
     </div>
-  </nav>
+</nav>

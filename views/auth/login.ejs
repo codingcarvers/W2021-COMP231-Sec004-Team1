@@ -1,45 +1,45 @@
 <%- include ../partials/header.ejs %>
-<%- include ../partials/main_nav.ejs %>
-  <!--Main Content-->
-  <main class="container">
-    <div class="jumbotron">
-      <h1 class="display-4">Welcome! to the <%= title %></h1>
-      <!--message area-->
-      <% if(messages.lenght > 0) { %>
-      <div class ="alert alert-danger"> 
-          <%= messages  %> 
-      </div>
-      <% } %> 
+  <%- include ../partials/main_nav.ejs %>
+    <!--Main Content-->
+    <main class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Welcome! to the <%= title %>
+        </h1>
+        <!--message area-->
+        <% if(messages.length>0 ) { %>
+          <div class="alert alert-danger">
+            <%= messages %>
+          </div>
+          <% } %>
 
-      <div class="row">
-          <div class="offset-md-4 col-md-4">
-              <h1>Please Login</h1>
-              <form action="" method="POST"></form>
-              <fieldset class="form-group"><label for="name">Username</label>
-                   <input type="text" class="form-control" 
-                   name="name" placeholder="Enter Username" 
-                   id="name" required autofocus> 
-                </fieldset>
+            <div class="row">
+              <div class="offset-md-4 col-md-4">
+                <h1>Please Login</h1>
+                <form action="/login" method="POST">
+                  <fieldset class="form-group"><label for="name">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Enter Username" id="name"
+                      required autofocus>
+                  </fieldset>
 
-                <fieldset class="form-group"><label for="password">Password</label>
-                    <input type="text" class="form-control" 
-                    name="password" placeholder="Enter Password" 
-                    id="password" required > 
+                  <fieldset class="form-group"><label for="password">Password</label>
+                    <input type="text" class="form-control" name="password" placeholder="Enter Password" id="password"
+                      required>
                     or
                     <a href="/register">Register Here</a>
-                 </fieldset>
+                  </fieldset>
 
-                 <fieldset class="form-group text-right">
-                     <input type="submit" class="btn btn-success" Value="Login">
-                     <a href="/">
-                        <input type="button" class="btn btn-warning" value="Cancel"></a>
-                    </fieldset>
-          </div>
+                  <fieldset class="form-group text-right">
+                    <input type="submit" class="btn btn-success" Value="Login">
+                    <a href="/">
+                      <input type="button" class="btn btn-warning" value="Cancel"></a>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+
+
       </div>
+    </main>
 
-
-    </div>
-  </main>
-
-<%- include ../partials/bottom_nav.ejs %>
-<%- include ../partials/footer.ejs %>  
+    <%- include ../partials/bottom_nav.ejs %>
+      <%- include ../partials/footer.ejs %>

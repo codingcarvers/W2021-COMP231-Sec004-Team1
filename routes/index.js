@@ -23,29 +23,32 @@ router.get('/home', indexController.displayHomePage);
 /* GET Services page. */
 router.get('/services', indexController.displayServicesPage);
 
-/* GET Search Clinics page. */
-router.get('/contact', indexController.displayContactsPage);
+/* Display Search Clinics page. */
+router.get('/search', indexController.displaySearchPage);
 
-/* GET Patient Home page. 
+/* GET Search Clinics page. */
+router.post('/search', indexController.processSearchPage);
+
+/* GET Patient Home page. */
 router.get('/patientHomePage/:id', requireAuth, indexController.displayPatHomePage);
 
-/* GET Doctor Home page. 
+/* GET Doctor Home page. */
 router.get('/doctorHomePage/:id', requireAuth, indexController.displayDocHomePage);
 
-/* GET Nurse Home page. 
+/* GET Nurse Home page. */
 router.get('/nurseHomePage/:id', requireAuth, indexController.displayNurHomePage);
 
 /* GET route for displaying the Login page. */
 router.get('/login', indexController.displayLoginPage);
 
 /* GET route for processing the Login page. */
-router.get('/login', indexController.processLoginPage);
+router.post('/login', indexController.processLoginPage);
 
 /* GET route for displaying the Registration page. */
 router.get('/register', indexController.displayRegisterPage);
 
 /* GET route for processing the registration page. */
-router.get('/register', indexController.processRegisterPage);
+router.post('/register', indexController.processRegisterPage);
 
 /* GET route for processing the Logout page. */
 router.get('/logout', indexController.processLogout);

@@ -1,0 +1,94 @@
+<%- include partials/header.ejs %>
+  <%- include partials/main_nav.ejs %>
+
+    <!--Main Content-->
+    <main class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Welcome! to the <%= title %>
+        </h1>
+        <!--message area-->
+        <% if(messages.length>0 ) { %>
+          <div class="alert alert-danger">
+            <%= messages %>
+          </div>
+          <% } %>
+
+
+            <!--Main Content-->
+            <center>
+              <div class="card" style="width: fit-content;">
+                <div class="card-body">
+                  <form action="/search" method="POST">
+                    <div class="row">
+                      <div class="form-group col-md-12"">    
+                    <label>Country: </label>
+                    <select name="country" class="custom-select" style="width:200px;">
+                        <% for (const i in countryOptions) { %>
+                          <option class=" form-control" value="<%=countryOptions[i].ID%>">
+                            <%= countryOptions[i].Name %>
+                          </option>
+                          <% } %>
+                            </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-12"">    
+                    <label>City: </label>
+                    <select name="city" class="custom-select" style="width:200px;">
+                        <% for (const i in cityOptions) { %>
+                          <option class=" form-control" value="<%=cityOptions[i].ID%>">
+                            <%= cityOptions[i].Name %>
+                          </option>
+                          <% } %>
+                            </select>
+                      </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </center>
+            <br>
+            <%if(data.length>0){%>
+              <center>
+                <div style="width:auto; border-style: solid;border-color: black;">
+                  <table class="table table-border table-hover">
+                    <thead class="bg-warning">
+                      <tr>
+                        <th> s.no </th>
+                        <th> Address </th>
+                        <th> City </th>
+                        <th> Postal Code </th>
+                        <th> Country </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <%for(var i=0;i< data.length;i++){%>
+                        <tr>
+                          <td>
+                            <%=i+1%>
+                          </td>
+                          <td>
+                            <%=data[i].address%>
+                          </td>
+                          <td>
+                            <%=data[i].city%>
+                          </td>
+                          <td>
+                            <%=data[i].postal_code%>
+                          </td>
+                          <td>
+                            <%=data[i].country%>
+                          </td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                  </table>
+                </div>
+              </center>
+              <%}%>
+      </div>
+    </main>
+
+    <%- include partials/bottom_nav.ejs %>
+      <%- include partials/footer.ejs %>
