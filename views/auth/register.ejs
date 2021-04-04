@@ -18,7 +18,7 @@
                      <div class="offset-md-4 col-md-4">
                         <h1>Please Register</h1>
                         <form method="POST" action="/register" autocomplete="on">
-                           <fieldset class="form-group"><label for="name">User Name: </label>
+                           <fieldset class="form-group"><label for="name">Username: </label>
                               <input type="text" class="form-control" name="username" placeholder="Enter Username" id="name"
                                  required autofocus>
                            </fieldset>
@@ -44,8 +44,15 @@
                            </fieldset>
 
                            <fieldset class="form-group"><label for="profile">Profile: </label>
-                              <input type="text" class="form-control" name="profile" placeholder="Enter P/D/N"
-                                 id="profile" required>
+                              <!-- <input type="text" class="form-control" name="profile" placeholder="Enter P/D/N"
+                                 id="profile" required> -->
+                                 <select name="profile" class="custom-select" style="width:200px;">
+                                    <% for (const i in profileOptions) { %>
+                                      <option class=" form-control" value="<%=profileOptions[i].ID%>">
+                                        <%= profileOptions[i].Name %>
+                                      </option>
+                                      <% } %>
+                                        </select>
                            </fieldset>
 
                            <fieldset class="form-group"><label for="password">Password: </label>

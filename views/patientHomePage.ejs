@@ -1,13 +1,64 @@
 <%- include partials/header.ejs %>
-<%- include partials/main_nav.ejs %>
+  <%- include partials/main_nav.ejs %>
 
-  <!--Main Content-->
-  <main class="container">
-    <div class="jumbotron">
-      <h1 class="display-4">Welcome! to the <%= title %></h1>
-      
-    </div>
-  </main>
+    <!--Main Content-->
+    <main class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Welcome! to the <%= title %>
+        </h1>
+        <br>
+        <!--message area-->
+        <% if(messages.length>0 ) { %>
+          <div class="alert alert-danger">
+            <%= messages %>
+          </div>
+          <% } %><br>
+            <center>
+              <div style="width:auto; border-style: solid;border-color: black;">
+                <table class="table table-border table-hover">
+                  <thead class="bg-warning">
+                    <tr>
+                      <th> s.no </th>
+                      <th> Patient Name </th>
+                      <th> Height </th>
+                      <th> Weight </th>
+                      <th> Temperature </th>
+                      <th> Physical examination record </th>
+                      <th> Date </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%for(var i=0;i< data.length;i++){%>
+                      <tr>
+                        <td>
+                          <%=i+1%>
+                        </td>
+                        <td>
+                          <%=data[i].name%>
+                        </td>
+                        <td>
+                          <%=data[i].height%>
+                        </td>
+                        <td>
+                          <%=data[i].weight%>
+                        </td>
+                        <td>
+                          <%=data[i].temperature%>
+                        </td>
+                        <td>
+                          <%=data[i].physical_exam_record%>
+                        </td>
+                        <td>
+                          <%= new Date(data[i].created).toLocaleString()%>
+                        </td>
+                      </tr>
+                      <%}%>
+                  </tbody>
+                </table>
+              </div>
+            </center>
+      </div>
+    </main>
 
-<%- include partials/bottom_nav.ejs %>
-<%- include partials/footer.ejs %>  
+    <%- include partials/bottom_nav.ejs %>
+      <%- include partials/footer.ejs %>

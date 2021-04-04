@@ -74,6 +74,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
+let primExamModel = require('../models/primilinaryexam');
+let primExam = primExamModel.primExamModel;
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

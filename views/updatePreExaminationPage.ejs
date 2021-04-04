@@ -1,0 +1,58 @@
+<%- include partials/header.ejs %>
+   <%- include partials/main_nav.ejs %>
+
+
+      <!--Main Content-->
+      <main class="container">
+         <div class="jumbotron">
+            <h1 class="display-4 text-center">
+               <%= title %>
+            </h1>
+            <div class="row">
+               <div class="offset-md-4 col-md-4">
+                  <form method="POST" action="/update/<%= id %>" autocomplete="on">
+                     <div class="form-group">
+                        <label>Patient Name: </label><b>
+                           <%= data.name %>
+                        </b>
+                     </div>
+
+                     <fieldset class="form-group"><label for="height">Height: </label>
+                        <input type="text" class="form-control" name="height" placeholder="Enter height in ft"
+                           value="<%= data.height %>" id="height">
+                     </fieldset>
+
+                     <fieldset class="form-group"><label for="weight">Weight: </label>
+                        <input type="text" class="form-control" name="weight" placeholder="Enter weight in kg"
+                           value="<%= data.weight %>" id="weight">
+                     </fieldset>
+
+                     <fieldset class="form-group"><label for="temperature">Temperature (in C): </label>
+                        <input type="text" class="form-control" name="temperature" placeholder="Enter Temperature"
+                           value="<%= data.temperature %>" id="temperature">
+                     </fieldset>
+                     <% if (userType=="D" ) { %>
+                        <fieldset class="form-group"><label for="physical_exam_record">Physical examination
+                              record: </label>
+                           <input type="text" class="form-control" name="physical_exam_record"
+                              placeholder="Enter Physical examination record" id="physical_exam_record"
+                              value="<%= data.physical_exam_record %>">
+                        </fieldset>
+                        <% }%>
+                        
+                        <fieldset class="form-group text-right">
+                           <input type="submit" class="btn btn-success" Value="update">
+                           <a href="/">
+                              <input type="button" class="btn btn-warning" value="Cancel">
+                           </a>
+                           </fieldset>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </main>
+
+
+
+      <%- include partials/bottom_nav.ejs %>
+         <%- include partials/footer.ejs %>

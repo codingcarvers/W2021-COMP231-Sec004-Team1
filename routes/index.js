@@ -50,6 +50,18 @@ router.get('/register', indexController.displayRegisterPage);
 /* GET route for processing the registration page. */
 router.post('/register', indexController.processRegisterPage);
 
+/* GET route for displaying the display PreExamination page. */
+router.get('/preExaminationPage', indexController.displayPreExaminationPage);
+
+/* GET route for processing the display PreExamination page. */
+router.post('/preExaminationPage', indexController.processPreExaminationPage);
+
+router.get('/delete/:id', indexController.deletePatientExamination);
+
+router.get('/update/:id', indexController.updatePatientExamination);
+
+router.post('/update/:id', indexController.postUpdatePatientExamination);
+
 /* GET route for processing the Logout page. */
 router.get('/logout', indexController.processLogout);
 
