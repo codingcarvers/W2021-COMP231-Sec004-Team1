@@ -109,8 +109,8 @@ module.exports.displayHomePage = (req, res, next) => {
             } else {
                 patientData = data;
                 //if no error exists
-                //need to add if conditions
                 switch (res.locals.currentUser.profile) {
+                    // Move to patient
                     case 'P':
                         const patientRecord = patientData.filter(val => val.name == res.locals.currentUser.name);
                         return res.render('patientHomePage',
@@ -120,6 +120,7 @@ module.exports.displayHomePage = (req, res, next) => {
                                 messages: patientRecord.length > 0 ? 'Successful login' : 'No Pre Examination record found',
                                 displayName: req.user ? req.user.name : ''
                             });
+                    // move to doctor
                     case 'D':
                         return res.render('doctorHomePage',
                             {
@@ -128,6 +129,7 @@ module.exports.displayHomePage = (req, res, next) => {
                                 messages: 'Successful login',
                                 displayName: req.user ? req.user.name : ''
                             });
+                    // Move to nurse
                     default:
                         return res.render('nurseHomePage',
                             {
@@ -183,14 +185,6 @@ module.exports.processSearchPage = (req, res, next) => {
                 cityOptions: cityOptions,
                 displayName: req.user ? req.user.name : ''
             });
-        // primExam.insertOne( { name: "nitinp", height: '6ft', weight: '70kg', temperature : '20', physical_exam_record : 'pass all test' } );
-        // primExam.find((err, data) => {
-        //     if (err) {
-        //         console.log(err)
-        //     } else {
-        //         console.log(data)
-        //     }
-        // });
     } catch (error) {
         console.log(error);
     }
@@ -291,7 +285,6 @@ module.exports.processRegisterPage = (req, res, next) => {
     let newUser = new User({
         username: req.body.username,
         name: req.body.username,
-        //password: req.body.password,
         dob: req.body.dob,
         address: req.body.address,
         gender: req.body.gender,
@@ -307,7 +300,6 @@ module.exports.processRegisterPage = (req, res, next) => {
                     title: 'Register',
                     messages: err.message || 'Registration Error',
                     profileOptions: profileOptions,
-                    // messages: req.flash('RegisterMessage'),
                     displayName: req.user ? req.user.name : ''
                 });
 
@@ -317,7 +309,6 @@ module.exports.processRegisterPage = (req, res, next) => {
             return passport.authenticate('local')(req, res, () => {
                 return res.redirect('login');
             });
-            return res.redirect('login');
         }
     });
 
@@ -370,15 +361,6 @@ module.exports.processPreExaminationPage = (req, res, next) => {
                         });
                 }
             })
-            // console.log(err);
-            // return res.render('addPreExaminationPage',
-            //     {
-            //         title: 'Add Preliminary examination',
-            //         messages: err.message || 'Add Preliminary examination Error',
-            //         patientList: [],
-            //         displayName: req.user ? req.user.name : '',
-            //         userType: req.user ? req.user.profile : 'P',
-            //     });
         }
         else {
             return res.redirect('/home');
@@ -407,7 +389,6 @@ module.exports.updatePatientExamination = (req, res, next) => {
                     data: data[0],
                     title: 'Update Preliminary examination',
                     messages: 'Update Preliminary examination Error',
-                    // messages: req.flash('RegisterMessage'),
                     displayName: req.user ? req.user.name : '',
                     userType: req.user ? req.user.profile : 'P',
                 });
@@ -426,16 +407,13 @@ module.exports.postUpdatePatientExamination = (req, res, next) => {
                     id: req.params.id,
                     title: 'Update Preliminary examination',
                     messages: 'Update Preliminary examination Error',
-                    // messages: req.flash('RegisterMessage'),
                     displayName: req.user ? req.user.name : ''
                 });
         }
         else {
             return res.redirect('/home');
         }
-
     });
-
 }
 
 
