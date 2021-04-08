@@ -3,7 +3,7 @@
     <!--Main Content-->
     <main class="container">
       <div class="jumbotron">
-        <h1 class="display-4">Welcome! to the <%= title %>
+        <h1 class="display-4">Welcome! to <%= title %>
         </h1>
         <!--message area-->
         <% if(messages.length>0 ) { %>
@@ -14,7 +14,7 @@
 
             <div class="row">
               <div class="offset-md-4 col-md-4">
-                <h1>Please Login</h1>
+                <h3>Please Login</h3>
                 <form action="/login" method="POST">
                   <fieldset class="form-group"><label for="name">Username</label>
                     <input type="text" class="form-control" name="username" placeholder="Enter Username" id="name"

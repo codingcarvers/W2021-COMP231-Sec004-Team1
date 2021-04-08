@@ -62,10 +62,6 @@ const countryOptions = [
     {
         ID: 'UK',
         Name: 'UK'
-    },
-    {
-        ID: 'India',
-        Name: 'India'
     }
 ];
 
@@ -92,10 +88,6 @@ const cityOptions = [
     {
         ID: 'Markham',
         Name: 'Markham'
-    },
-    {
-        ID: 'delhi',
-        Name: 'delhi'
     }
 ];
 
@@ -116,7 +108,7 @@ module.exports.displayHomePage = (req, res, next) => {
                         return res.render('patientHomePage',
                             {
                                 data: patientRecord || [],
-                                title: 'PatientHomePage',
+                                title: 'Patient Home Page',
                                 messages: patientRecord.length > 0 ? 'Successful login' : 'No Pre Examination record found',
                                 displayName: req.user ? req.user.name : ''
                             });
@@ -124,7 +116,7 @@ module.exports.displayHomePage = (req, res, next) => {
                         return res.render('doctorHomePage',
                             {
                                 data: patientData,
-                                title: 'DoctorHomePage',
+                                title: 'Doctor Home Page',
                                 messages: 'Successful login',
                                 displayName: req.user ? req.user.name : ''
                             });
@@ -132,7 +124,7 @@ module.exports.displayHomePage = (req, res, next) => {
                         return res.render('nurseHomePage',
                             {
                                 data: patientData,
-                                title: 'NurseHomePage',
+                                title: 'Nurse Home Page',
                                 messages: 'Successful login',
                                 displayName: req.user ? req.user.name : ''
                             });
@@ -226,7 +218,7 @@ module.exports.displayLoginPage = (req, res, next) => {
     if (!req.user) {
         return res.render('auth/login',
             {
-                title: "Login",
+                title: "Login Page",
                 messages: req.flash('loginmessage'),
                 displayName: req.user ? req.user.name : ''
             })
@@ -437,7 +429,6 @@ module.exports.postUpdatePatientExamination = (req, res, next) => {
     });
 
 }
-
 
 /*process Logout*/
 module.exports.processLogout = (req, res, next) => {
