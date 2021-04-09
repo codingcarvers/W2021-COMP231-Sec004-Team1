@@ -4,14 +4,12 @@
  * Module dependencies.
  */
 
-var app = require('./config/app');
-var debug = require('debug')('codeemr:server');
-var http = require('http');
-
+let app = require('./config/app');
+let debug = require('debug')('codeemr:server');
+let http = require('http');
 /**
  * Get port from environment and store in Express.
  */
-
 var port = normalizePort(process.env.PORT || '4001');
 app.set('port', port);
 
@@ -61,7 +59,6 @@ function onError(error) {
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
-
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
@@ -80,7 +77,6 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
