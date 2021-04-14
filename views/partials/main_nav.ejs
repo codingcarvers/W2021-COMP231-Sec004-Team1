@@ -47,7 +47,7 @@
 
 
               <%if(currentUser){%>
-                <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+                <li class="nav-item">Welcome, <%= displayName%> <a href="/logout" class="nav-link">Logout</a></li>
                 <% } else { %>
                   <% if (title=="Register" ) { %>
                     <li class="nav-item active">
