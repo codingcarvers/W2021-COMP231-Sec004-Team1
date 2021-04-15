@@ -135,13 +135,13 @@ module.exports.displayHomePage = (req, res, next) => {
         });
     }
     else {
-        res.render('index', { title: 'Welcome! to Next Generation EMR We provide you best Health care Services ', displayName: req.user ? req.user.name : '' });
+        res.render('index', { title: 'Home', displayName: req.user ? req.user.name : '' });
     }
 }
 
 /* GET Services page. */
 module.exports.displayServicesPage = (req, res, next) => {
-    res.render('index', { title: 'Patient Registration,Appointment Booking, Patient Checkup,Patient Treatment', displayName: req.user ? req.user.name : '' });
+    res.render('index', { title: 'Services', displayName: req.user ? req.user.name : '' });
 }
 
 /* GET Search Clinics page. */

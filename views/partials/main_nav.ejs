@@ -36,16 +36,6 @@
               </li>
 
 
-              <!-- 
-                <% if(typeof displayName=='String' && displayName) {%>
-                  <li class="nav-text"> Welcome, <%= displayName %>
-                  </li>
-                    <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
-                      <% } else { %>
-                        <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-                        <% } %> -->
-
-
               <%if(currentUser){%>
                 <li class="nav-item">Welcome, <%= displayName%> <a href="/logout" class="nav-link">Logout</a></li>
                 <% } else { %>
